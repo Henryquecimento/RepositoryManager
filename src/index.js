@@ -23,7 +23,9 @@ app.post("/repositories", (request, response) => {
     likes: 0
   };
 
-  return response.json(repository);
+  repositories.push(repository);
+
+  return response.status(201).json({ message: "Repository has been created successfully!" });
 });
 
 app.put("/repositories/:id", (request, response) => {
