@@ -20,7 +20,7 @@ app.post("/repositories", (request, response) => {
     title,
     url,
     techs,
-    likes: 1
+    likes: 0
   };
 
   repositories.push(repository);
@@ -75,7 +75,9 @@ app.post("/repositories/:id/like", (request, response) => {
 
   const likes = ++repositories[repositoryIndex].likes;
 
-  return response.json('likes');
+  repositories[repositoryIndex].likes = likes;
+
+  return response.status(201).json({ message: "You've liked this repository!" })
 });
 
 module.exports = app;
